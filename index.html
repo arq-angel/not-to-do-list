@@ -21,12 +21,103 @@
       referrerpolicy="no-referrer"
     />
 
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      .wrapper {
+        background: linear-gradient(
+          rgba(255, 0, 0, 0.608),
+          rgba(128, 0, 128, 0.499)
+        );
+        min-height: 100vh;
+      }
+
+      .table {
+        --bs-table-bg: transparent;
+      }
+    </style>
+
     <title>Not To Do List</title>
   </head>
   <body>
-    <button class="btn btn-danger">
-      Click me <i class="fa-solid fa-house"></i>
-    </button>
+    <div class="wrapper pt-5">
+      <!-- title -->
+      <div class="container">
+        <h1 class="text-center">Not To Do List</h1>
+
+        <!-- form -->
+        <form
+          onsubmit="handleOnFormSubmit(this)"
+          action="javascript:void(0)"
+          class="border p-5 rounded shadow mt-5"
+        >
+          <div class="row g-2">
+            <div class="col-md-7">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="task"
+                aria-label="task"
+                name="task"
+                id="task"
+              />
+            </div>
+            <div class="col-md-2">
+              <input
+                type="number"
+                class="form-control"
+                placeholder="40"
+                aria-label="hr"
+                name="hr"
+                min="1"
+                id="hr"
+              />
+            </div>
+            <div class="col-md-3 d-grid">
+              <button class="btn btn-primary">Add New Task</button>
+            </div>
+          </div>
+        </form>
+
+        <!-- tables -->
+        <div class="row mt-5">
+          <div class="col-md">
+            <h3 class="text-center">Entry List</h3>
+            <hr />
+
+            <!-- Entry list table -->
+            <table class="table table-striped table-hover border">
+              <tbody id="entryList"></tbody>
+            </table>
+          </div>
+          <div class="col-md">
+            <h3 class="text-center">Bad List</h3>
+            <hr />
+
+            <!-- Bad list table -->
+            <table class="table table-striped table-hover border">
+              <tbody id="badList"></tbody>
+            </table>
+
+            <div class="alert alert-success">
+              You could have saved = <span id="savedHrsElm">0</span> hrs
+            </div>
+          </div>
+        </div>
+
+        <div class="alert alert-success">
+          The total hours allocated = <span id="ttlHrs">0</span> hrs
+        </div>
+
+        <!-- Entry list table -->
+
+        <!-- Bad List table -->
+      </div>
+    </div>
 
     <!-- Bootstrap script cdn -->
     <script
@@ -43,5 +134,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+
+    <script src="./scripts.js"></script>
   </body>
 </html>
